@@ -1,92 +1,826 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Muhamad Idris Arusdi</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Font Awesome untuk ikon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Fresh Graduate SMK Akuntansi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-blue: #0066ff;
+            --glow-blue: #00aaff;
+            --dark-blue: #003366;
+            --light-blue: #e6f0ff;
+            --accent-green: #22cc88;
+            --accent-orange: #ff8844;
+            --accent-purple: #8844ee;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--glow-blue));
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a192f, #112240);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--glow-blue);
+            text-shadow: 0 0 10px var(--glow-blue);
+            animation: glowPulse 2s infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--glow-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--glow-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-blue), var(--glow-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGlow 3s infinite;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #ccd6f6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 170, 255, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--glow-blue);
+            border: 2px solid var(--glow-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--glow-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: rgba(17, 34, 64, 0.5);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--glow-blue);
+            text-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--glow-blue);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #a8b2d1;
+        }
+
+        .about-image {
+            position: relative;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--glow-blue);
+            box-shadow: 0 0 30px rgba(0, 170, 255, 0.5);
+            margin: 0 auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover .profile-img {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 170, 255, 0.7);
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #0a192f, #112240);
+        }
+
+        .skills-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 170, 255, 0.1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 170, 255, 0.2);
+            border-color: var(--glow-blue);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--glow-blue);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .skill-card p {
+            color: #a8b2d1;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 2rem;
+            background: rgba(17, 34, 64, 0.5);
+        }
+
+        .projects-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 170, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 170, 255, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--glow-blue);
+        }
+
+        .project-content p {
+            color: #a8b2d1;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background: rgba(0, 170, 255, 0.1);
+            color: var(--glow-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #0a192f, #112240);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #a8b2d1;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 170, 255, 0.2);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--glow-blue);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: #a8b2d1;
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a192f;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(0, 170, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--glow-blue);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: #a8b2d1;
+            font-size: 0.9rem;
+        }
+
+        .github-link {
+            margin-top: 1rem;
+            display: inline-block;
+            color: var(--glow-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .github-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 0 0 10px var(--glow-blue);
+            }
+            50% {
+                text-shadow: 0 0 20px var(--glow-blue), 0 0 30px var(--glow-blue);
+            }
+        }
+
+        @keyframes textGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(0, 170, 255, 0.8), 0 0 30px rgba(0, 170, 255, 0.6);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(10, 25, 47, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .profile-img {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .skill-card, .project-card {
+                padding: 1.5rem;
+            }
+
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a192f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(0, 170, 255, 0.3);
+            border-top: 3px solid var(--glow-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Halo, Saya <span>Muhamad Idris Arusdi</span></h1>
-        <p>Seorang web developer yang fokus pada desain modern dan fungsional.</p>
-        <div class="hero-buttons">
-          <a href="#portfolio" class="btn btn-primary">Lihat Portofolio</a>
-          <a href="https://wa.me/62838321856812?text=Halo%20saya%20tertarik%20dengan%20portfolio%20Anda" 
-             target="_blank" 
-             class="btn btn-secondary">
-             Hubungi Saya
-          </a>
-        </div>
-      </div>
+    <!-- Loading Screen -->
+    <div class="loading">
+        <div class="loader"></div>
     </div>
-  </section>
 
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="portfolio">
-    <div class="container">
-      <h2 class="section-title">Portofolio Saya</h2>
-      <div class="portfolio-grid">
-        <div class="portfolio-item">
-          <img src="7.png" alt="Project 1">
-          <h3>Website Portofolio</h3>
-          <p>Website portofolio pribadi dengan desain responsif.</p>
-        </div>
-        <div class="portfolio-item">
-          <img src="8.png" alt="Project 2">
-          <h3>Aplikasi Kasir</h3>
-          <p>Aplikasi sederhana untuk membantu pencatatan transaksi toko.</p>
-        </div>
-        <div class="portfolio-item">
-          <img src="9.png" alt="Project 3">
-          <h3>Desain Canva</h3>
-          <p>Koleksi desain grafis menggunakan Canva.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2 class="section-title">Kontak Saya</h2>
-      <div class="contact-content">
-        <p>Jika tertarik untuk bekerja sama atau sekadar diskusi, jangan ragu untuk menghubungi saya!</p>
-        <div class="contact-info">
-          <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <h3>Email</h3>
-            <p>emailkamu@example.com</p>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-phone"></i>
-            <h3>Telepon</h3>
-            <p>+62 838-3218-56812</p>
-          </div>
-          <div class="contact-item">
-            <i class="fab fa-whatsapp"></i>
-            <h3>WhatsApp</h3>
-            <p>
-              <a href="https://wa.me/62838321856812?text=Halo%20saya%20tertarik%20dengan%20portfolio%20Anda"
-                 target="_blank"
-                 style="color:#25D366; text-decoration:none;">
-                 Kirim Pesan
-              </a>
-            </p>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <h3>Lokasi</h3>
-            <p>Depok, Jawa Barat</p>
-          </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Halo, Saya Muhamad idris arusdi</h1>
+            <p>Fresh Graduate SMK Akuntansi dengan minat di bidang Teknologi Informasi dan Pengembangan Web</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">Lihat Karya Saya</a>
+                <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">Tentang Saya</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Lulusan SMK Akuntansi dengan Passion di IT</h3>
+                <p>Saya adalah lulusan SMK Jurusan Akuntansi tahun 2025 dengan dasar pengetahuan yang kuat dalam akuntansi keuangan dan minat yang besar dalam bidang Teknologi Informasi.</p>
+                <p>Selama masa studi, saya mengembangkan pemahaman mendalam tentang prinsip-prinsip akuntansi, pembukuan, laporan keuangan, dan perpajakan. Secara paralel, saya secara mandiri mempelajari dasar-dasar pengembangan web dan pemrograman.</p>
+                <p>Saya percaya bahwa kombinasi pengetahuan akuntansi dan skill IT dapat menciptakan solusi yang powerful untuk dunia bisnis modern. Saya bersemangat untuk terus belajar dan berkembang di persimpangan antara keuangan dan teknologi.</p>
+                <p>Di waktu luang, saya senang mempelajari teknologi baru, mengerjakan proyek coding kecil, dan membaca tentang perkembangan terbaru dalam dunia fintech dan digital transformation.</p>
+            </div>
+            <div class="about-image">
+                <img src="6.png" alt="Potret profesional fresh graduate SMK Akuntansi dengan latar belakang modern" class="profile-img" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2 class="section-title">Keahlian Saya</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-calculator skill-icon"></i>
+                <h3>Akuntansi Dasar</h3>
+                <p>Pembukuan, Laporan Keuangan, Perpajakan, Software Akuntansi (MYOB, Accurate)</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-code skill-icon"></i>
+                <h3>Pengembangan Web Dasar</h3>
+                <p>HTML, CSS, JavaScript dasar, Responsive Design, Git & GitHub</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-file-excel skill-icon"></i>
+                <h3>Microsoft Office</h3>
+                <p>Excel (Formula, Pivot table), Word, Myob, PowerPoint untuk presentasi bisnis</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-chart-line skill-icon"></i>
+                <h3>Analisis Data Dasar</h3>
+                <p>Pengolahan data keuangan, Laporan analitis, Visualisasi data sederhana</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2 class="section-title">Proyek Saya</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="9.png" alt="Desain promosi Pressed Juice dibuat menggunakan Canva dengan konsep sederhana dan warna cerah" />
+                </div>
+                <div class="project-content">
+                    <h3>Desain sederhana</h3>
+                    <p>Desain ini dibuat menggunakan aplikasi Canva dengan pendekatan visual yang sederhana, bersih, dan komunikatif. Pemilihan warna kuning dan oranye bertujuan untuk menciptakan nuansa segar, energik, sekaligus merepresentasikan tema kesehatan dan kesegaran produk Pressed Juice..</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Canva</span>
+                        <span class="project-tag">Pixlabe</span>
+                        <span class="project-tag">Web.hdr
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="8.png" alt="Template website perusahaan akuntansi dengan desain profesional" />
+                </div>
+                <div class="project-content">
+                    <h3>Website Bucin anniversary </h3>
+                    <p>Website Responsive untuk anak muda bucin seperti saya.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">HTML</span>
+                        <span class="project-tag">CSS</span>
+                        <span class="project-tag">Responsive</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="7.png" alt="Dashboard laporan keuangan sederhana dengan grafik dan tabel data" />
+                </div>
+                <div class="project-content">
+                    <h3>Laporan Keuangan Excel</h3>
+                    <p>Template Excel untuk analisis keuangan usaha kecil dengan dashboard dan visualisasi data.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Excel</span>
+                        <span class="project-tag">Myob</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+  <div class="container">
+    <h2 class="section-title">Kontak Saya</h2>
+    <div class="contact-content">
+      <p>Jika tertarik untuk bekerja sama atau sekadar diskusi, jangan ragu untuk menghubungi saya!</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <h3>Email</h3>
+          <p>muhamadidris
+              arusdi@gmail.com
+          </p>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <h3>Telepon</h3>
+          <p>+62 838-3218-56812</p>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-whatsapp"></i>
+          <h3>WhatsApp</h3>
+          <p>
+            <a href="https://wa.me/62838321856812?text=Halo%20saya%20tertarik%20dengan%20portfolio%20Anda"
+               target="_blank"
+               style="color:#25D366; text-decoration:none;">
+               Kirim Pesan
+            </a>
+          </p>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Lokasi</h3>
+          <p>Cianjur, Jawa Barat</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+    
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/username-anda" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <a href="https://github.com/KAKKOI556" target="_blank" class="github-link">
+            <i class="fab fa-github"></i> Lihat GitHub Saya
+        </a>
+        <p class="copyright">© 2025 Muhamad idris arusdi. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            const loading = document.querySelector('.loading');
+            setTimeout(() => {
+                loading.style.opacity = '0';
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(10, 25, 47, 0.98)';
+                header.style.padding = '0.5rem 2rem';
+            } else {
+                header.style.background = 'rgba(10, 25, 47, 0.95)';
+                header.style.padding = '1rem 2rem';
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.skill-card, .project-card, .contact-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
+
